@@ -1,7 +1,6 @@
 <?php 
 include 'layout/admin_navbar.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,7 +259,6 @@ include 'layout/admin_navbar.php';
     </section>
 </body>
 </html>
-
 <?php
 include __DIR__ . '/layout/footer.php'; 
 ?>
