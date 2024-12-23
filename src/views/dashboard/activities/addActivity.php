@@ -1,23 +1,23 @@
 <?php include 'C:/xampp/htdocs/riad-room-booking/src/views/layout/admin_navbar.php'; ?>
 
+<!-- src/views/dashboard/activities/addActivity.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add New Room</title>
+    <title>Add New Activity</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
-        <h1 class="text-2xl font-bold mb-6">Add New Room</h1>
+        <h1 class="text-2xl font-bold mb-6">Add New Activity</h1>
         
-        <form action="index.php?page=storeAdminRoom" 
-              method="POST" 
+        <form action="index.php?page=adminstoreActivity" method="POST" 
               enctype="multipart/form-data" 
               class="space-y-4">
             
             <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Room Name:</label>
+                <label for="name" class="block text-sm font-medium text-gray-700">Activity Name:</label>
                 <input type="text" 
                        id="name" 
                        name="name" 
@@ -44,16 +44,6 @@
             </div>
 
             <div>
-                <label for="availability" class="block text-sm font-medium text-gray-700">Availability:</label>
-                <select id="availability" 
-                        name="availability" 
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                    <option value="1">Available</option>
-                    <option value="0">Not Available</option>
-                </select>
-            </div>
-
-            <div>
                 <label for="image" class="block text-sm font-medium text-gray-700">Image:</label>
                 <input type="file" 
                        id="image" 
@@ -67,19 +57,10 @@
                               hover:file:bg-indigo-100">
             </div>
 
-            <div>
-                <label for="room_type" class="block text-sm font-medium text-gray-700">Room Type:</label>
-                <input type="text" 
-                       id="room_type" 
-                       name="room_type" 
-                       required 
-                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-            </div>
-
             <div class="pt-5">
                 <button type="submit" 
                         class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    Add Room
+                    Add Activity
                 </button>
             </div>
         </form>
@@ -96,7 +77,6 @@
             preview.src = e.target.result;
         }
         
-        // Clear previous preview
         const previewContainer = this.parentElement.querySelector('img');
         if (previewContainer) {
             previewContainer.replaceWith(preview);

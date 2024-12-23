@@ -163,11 +163,23 @@ include __DIR__ . '/layout/navbar.php';
   font-size: 16px; /* Text size */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
-
-
 </style>
-</body>
-</html>
+
+<div class="container">
+    <!-- Homepage Header Section -->
+    <section class="homepage-header">
+        <?php if ($homepageHeader): ?>
+            <img src="<?php echo htmlspecialchars('/riad-room-booking' . $homepageHeader['IMAGE']); ?>" alt="Header Image">
+            <div class="overlay">
+                <h1><?php echo htmlspecialchars($homepageHeader['OVERLAY_TEXT'] ?? 'Welcome to Riad Room Booking'); ?></h1>
+            </div>
+            <a href="/riad-room-booking/public/index.php?page=rooms">
+                <button>
+                    Explore our rooms now
+                </button>
+            </a>
+        <?php endif; ?>
+    </section>
 
 <!-- Riad Image & Info Section -->
 <section class="riad-info">
@@ -184,36 +196,74 @@ include __DIR__ . '/layout/navbar.php';
     <!-- Featured Rooms Section -->
     <section class="featured-rooms">
         <h2>Featured Rooms</h2>
-        <div class="room-cards">
-            <?php foreach ($featuredRooms as $room): ?>
-                <div class="room-card">
-                    <img src="<?php echo htmlspecialchars($room['IMAGE'] ?? 'default-room.jpg'); ?>" alt="<?php echo htmlspecialchars($room['NAME'] ?? 'Room'); ?>">
-                    <h3><?php echo htmlspecialchars($room['NAME'] ?? 'Room'); ?></h3>
-                    <p><?php echo htmlspecialchars($room['DESCRIPTION'] ?? 'No description available.'); ?></p>
-                    <a href="/riad-room-booking/public/index.php?page=room&id=<?php echo $room['ROOM_ID']; ?>" class="btn btn-home">Book Now</a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="discover-more">
-            <a href="/riad-room-booking/public/index.php?page=rooms" class="discover-more-btn">Discover More Rooms</a>
+        <table class="rooms-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Room Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($featuredRooms as $room): ?>
+                    <tr>
+                        <td><img src="<?php echo '/riad-room-booking' . htmlspecialchars($room['IMAGE'] ?? 'default-room.jpg'); ?>" alt="<?php echo htmlspecialchars($room['name'] ?? 'Room'); ?>" style="width: 100px; height: auto;"></td>
+                        <td><?php echo htmlspecialchars($room['NAME'] ?? 'Room'); ?></td>
+                        <td><?php echo htmlspecialchars($room['DESCRIPTION'] ?? 'No description available.'); ?></td>
+                        <td>$<?php echo htmlspecialchars(number_format($room['PRICE'] ?? 0, 2)); ?></td>
+                        <td><?php echo htmlspecialchars($room['ROOM_TYPE'] ?? 'Unknown'); ?></td>
+                        <td>
+                            <a href="/riad-room-booking/public/index.php?page=room&id=<?php echo $room['ROOM_ID']; ?>">
+                                <button>Book Now</button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/riad-room-booking/public/index.php?page=rooms">
+                <button>Explore More Rooms</button>
+            </a>
         </div>
     </section>
 
     <!-- Featured Activities Section -->
     <section class="featured-activities">
         <h2>Featured Activities</h2>
-        <div class="activity-cards">
-            <?php foreach ($featuredActivities as $activity): ?>
-                <div class="activity-card">
-                    <img src="<?php echo htmlspecialchars($activity['IMAGE'] ?? 'default-activity.jpg'); ?>" alt="<?php echo htmlspecialchars($activity['NAME'] ?? 'Activity'); ?>">
-                    <h3><?php echo htmlspecialchars($activity['NAME'] ?? 'Activity'); ?></h3>
-                    <p><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? 'No description available.'); ?></p>
-                    <a href="/riad-room-booking/public/index.php?page=activity&id=<?php echo $activity['ACTIVITY_ID']; ?>" class="btn btn-home">Learn More</a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="discover-more">
-            <a href="/riad-room-booking/public/index.php?page=activities" class="discover-more-btn">Discover More Activities</a>
+        <table class="activities-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Activity Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($featuredActivities as $activity): ?>
+                    <tr>
+                        <td><img src="<?php echo '/riad-room-booking' . htmlspecialchars($activity['IMAGE'] ?? 'default-activity.jpg'); ?>" alt="<?php echo htmlspecialchars($activity['name'] ?? 'Activity'); ?>" style="width: 100px; height: auto;"></td>
+                        <td><?php echo htmlspecialchars($activity['NAME'] ?? 'Activity'); ?></td>
+                        <td><?php echo htmlspecialchars($activity['DESCRIPTION'] ?? 'No description available.'); ?></td>
+                        <td>$<?php echo htmlspecialchars(number_format($activity['PRICE'] ?? 0, 2)); ?></td>
+                        <td>
+                            <a href="/riad-room-booking/public/index.php?page=activity&id=<?php echo $activity['ACTIVITY_ID']; ?>">
+                                <button>Learn More</button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/riad-room-booking/public/index.php?page=activities">
+                <button>Explore More Activities</button>
+            </a>
         </div>
     </section>
 

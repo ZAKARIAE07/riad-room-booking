@@ -1,6 +1,7 @@
 <?php 
-include 'layout/admin_navbar.php'; 
+include 'layout/navbar.php'; 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
